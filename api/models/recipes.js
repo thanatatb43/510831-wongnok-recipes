@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Recipes.belongsTo(models.Users, {
+        as: 'user',
+        foreignKey: 'user_id', // fk's recipes table
+        sourceKey: 'id', // pk's users table
+      });
     }
   }
   Recipes.init({
@@ -19,7 +24,17 @@ module.exports = (sequelize, DataTypes) => {
     material_of_menu: DataTypes.STRING,
     menu_structure: DataTypes.STRING,
     menu_duration: DataTypes.STRING,
-    menu_level_of_difficulty: DataTypes.STRING
+    menu_level_of_difficulty: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: {
+          tableName: 'users'
+        },
+        key: 'id' // id คือ pk ของตาราง users
+      }
+    },
   }, {
     sequelize,
     modelName: 'Recipes',

@@ -11,7 +11,7 @@ require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const recipesRouter = require("./routes/recipes");
-// const newsRouter = require("./routes/news");
+const usersRouter = require('./routes/users');
 
 const app = express();
 app.use(cors());
@@ -39,6 +39,6 @@ passport.initialize();
 
 app.use("/", indexRouter); // localhost:3000
 app.use("/recipes", recipesRouter); // localhost:3000/recipes
-// app.use("/news", newsRouter); // localhost:3000/news
+app.use('/user', usersRouter);// localhost:3000/user
 
 module.exports = app;

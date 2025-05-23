@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const recipesController = require('../controllers/create-recipe-controller');
+const passport = require('passport');
+const passportJWT = require('../middlewares/passport-jwt');
 
 // localhost:3000/recipes/
 router.get('/', recipesController.index );
 
-// // localhost:3000/news/
-// router.post('/', [passportJWT.isLogin] ,newsController.create );
-
-// // localhost:3000/news/upload
-// router.post('/upload', [passportJWT.isLogin, upload.single('file')] ,newsController.upload );
-
+// localhost:3000/recipes/
+router.post('/create', [passportJWT.isLogin] ,recipesController.create );
 
 module.exports = router;
