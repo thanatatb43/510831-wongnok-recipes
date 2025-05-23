@@ -4,4 +4,5 @@ Postman Collection : https://cloudy-capsule-625660.postman.co/workspace/My-Works
 2. ติดตั้ง nodejs
 3. cd api -> npm install
 4. run api (cd api -> npm run dev) api จะ running ที่ localhost:3000
-5. 
+5. สร้าง database ชื่อ
+ุ6. ทำ migration ให้กับ database โดยไปที่ folder api จากนั้นใช้คำสั่ง (npx sequelize-cli db:migrate)
