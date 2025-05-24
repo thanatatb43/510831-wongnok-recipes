@@ -141,7 +141,8 @@ exports.login = async function(req, res, next) {
     
     return res.status(200).json({
         message: 'เข้าสู่ระบบสำเร็จ',
-        access_token: token
+        access_token: token,
+        user: user.id
     });
 }
 

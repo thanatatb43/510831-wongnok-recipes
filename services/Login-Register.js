@@ -40,7 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         //Do stuff with the response.
         if (response) {
+          console.log(response);
           alert(response.data.message);
+
+          // บันทึกข้อมูลการ login ลงใน local storage
+          localStorage.setItem("isLogin", response.data.access_token);
+          localStorage.setItem("activeUser", response.data.user);
+          
           window.location.href = "index.html";
         } else {
           alert("เกิดข้อผิดพลาด");
