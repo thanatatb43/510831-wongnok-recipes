@@ -1,27 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
-  let myBody, message;
+  let myBody, message, email, password, fullname;
 
+  // login
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault(); // หยุดการส่งฟอร์มเพื่อป้องกันการรีเฟรชหน้าเว็บ
 
-    const email = loginForm.email.value;
-    const password = loginForm.pswd.value;
+    email = loginForm.email.value;
+    password = loginForm.pswd.value;
 
     // เรียกใช้ฟังก์ชันสำหรับตรวจสอบข้อมูลผู้ใช้
     authenticateUser(email, password);
   });
 
+  // register
   signupForm.addEventListener("submit", function (event) {
     event.preventDefault(); // หยุดการส่งฟอร์มเพื่อป้องกันการรีเฟรชหน้าเว็บ
 
-    const fullname = signupForm.txt.value;
-    const email = signupForm.email.value;
-    const password = signupForm.pswd.value;
+    email = signupForm.registerEmail.value;
+    password = signupForm.registerPswd.value;
+    fullname = signupForm.registerTxt.value;
 
     // เรียกใช้ฟังก์ชันสำหรับตรวจสอบข้อมูลผู้ใช้
-    checkDuplicateEmail(fullname, email, password);
+    checkDuplicateEmail(email, password, fullname);
   });
 
   function authenticateUser(email, password) {
@@ -38,32 +40,34 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         //Do stuff with the response.
         if (response) {
-          alert("เข้าสู่ระบบสำเร็จ!" + response);
+          alert(response.data.message);
           window.location.href = "index.html";
         } else {
           alert("เกิดข้อผิดพลาด");
         }
       })
-      .catch((response) => {
-        console.log(response);
-        alert(response);
+      .catch((error) => {
+        console.log(error);
+        alert({ ...error }.response.data.message);
       });
   }
 
-  function checkDuplicateEmail(email, fullname, password) {
+  function checkDuplicateEmail(email, password, fullname) {
     myBody = {
-      fullname: fullname,
       email: email,
       password: password,
+      fullname: fullname,
     };
-    message = axiosTest();
 
-    // call api
-    async function axiosTest() {
-      const response = await axios.post("http://localhost:3000/user/", myBody);
-      return response.data;
-    }
-
-    alert(message);
+    axios
+      .post("http://localhost:3000/user", myBody)
+      .then((response) => {
+        console.log(response.data);
+        alert(response.data.message + " คุณสามารถใช้ Email นี้ Login ได้");
+      })
+      .catch((error) => {
+        console.log({ ...error }.response.data.message);
+        alert({ ...error }.response.data.message);
+      });
   }
 });
