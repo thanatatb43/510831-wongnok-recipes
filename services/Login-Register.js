@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
-  let myBody, message, email, password, fullname;
+  const forLoginRegister = document.getElementById("forLoginRegister");
+  const member = document.getElementById("member");
+  let myBody, email, password, fullname;
+
+  if (localStorage.getItem("activeUser")) {
+    forLoginRegister.innerHTML = "";
+  } else {
+    member.innerHTML = "";
+  }
 
   // login
   loginForm.addEventListener("submit", function (event) {
@@ -46,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // บันทึกข้อมูลการ login ลงใน local storage
           localStorage.setItem("isLogin", response.data.access_token);
           localStorage.setItem("activeUser", response.data.user);
-          
+
           window.location.href = "index.html";
         } else {
           alert("เกิดข้อผิดพลาด");

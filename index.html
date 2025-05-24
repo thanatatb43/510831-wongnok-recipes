@@ -64,7 +64,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li id ="forLoginRegister" class="nav-item">
                 <a href="Login-Register.html" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
@@ -80,41 +80,43 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-header">สมาชิก</li>
-              <!-- Sidebar user panel (optional) -->
-              <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                  <img
-                    src="adminlte/dist/img/user2-160x160.jpg"
-                    class="img-circle elevation-2"
-                    alt="User Image"
-                  />
+              <div id="member">
+                <li class="nav-header">สมาชิก</li>
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+                    <img
+                      src="adminlte/dist/img/user2-160x160.jpg"
+                      class="img-circle elevation-2"
+                      alt="User Image"
+                    />
+                  </div>
+                  <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
+                  </div>
                 </div>
-                <div class="info">
-                  <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
+                <li class="nav-item">
+                  <a href="pages/calendar.html" class="nav-link">
+                    <i class="nav-icon far fa-calendar-alt"></i>
+                    <p>
+                      สูตรอาหารของฉัน
+                      <span class="badge badge-info right">2</span>
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/gallery.html" class="nav-link">
+                    <i class="nav-icon far fa-image"></i>
+                    <p>รีวิวของฉัน</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="logOut()" href="index.html" class="nav-link">
+                    <i class="nav-icon fas fa-columns"></i>
+                    <p>Logout</p>
+                  </a>
+                </li>
               </div>
-              <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
-                  <p>
-                    สูตรอาหารของฉัน
-                    <span class="badge badge-info right">2</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
-                  <i class="nav-icon far fa-image"></i>
-                  <p>รีวิวของฉัน</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/kanban.html" class="nav-link">
-                  <i class="nav-icon fas fa-columns"></i>
-                  <p>Logout</p>
-                </a>
-              </li>
             </ul>
           </nav>
           <!-- /.sidebar-menu -->
@@ -238,5 +240,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="services/index.js"></script>
     <script src="services/Login-Register.js"></script>
+    <script>
+      function logOut() {
+        alert("ลงชื่อออกเรียบร้อย");
+        localStorage.clear();
+      }
+    </script>
   </body>
 </html>
