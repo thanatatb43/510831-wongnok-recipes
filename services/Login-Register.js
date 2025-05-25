@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const signupForm = document.getElementById("signupForm");
   const forLoginRegister = document.getElementById("forLoginRegister");
   const member = document.getElementById("member");
-  let myBody, email, password, fullname;
+  var myBody, email, password, fullname;
 
   if (localStorage.getItem("activeUser")) {
     forLoginRegister.innerHTML = "";

@@ -53,9 +53,17 @@ exports.show = async function(req, res, next) {
     const users = await model.Users.findByPk(id, {
         attributes: { exclude: ['password'] },
         include: [{
-            model: model.News,
-            as: 'news',
-            attributes: ['id', 'title']
+            model: model.Recipes,
+            as: 'recipes',
+            attributes: [
+                'id', 
+                'name_of_menu', 
+                'picture_of_menu',
+                'material_of_menu',
+                'menu_structure',
+                'menu_duration',
+                'menu_level_of_difficulty'
+                ]
         }],
     });
 

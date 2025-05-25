@@ -12,7 +12,7 @@ exports.index = async function (req, res, next) {
   });
 
   return res.status(200).json({
-    data: recipes,
+    data: recipes
   });
 };
 
