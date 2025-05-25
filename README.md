@@ -10,4 +10,4 @@ adminlte ดาวน์โหลดได้จาก (https://github.com/Color
 6. ทำ migration ให้กับ database โดยไปที่ folder api จากนั้นใช้คำสั่ง (npx sequelize-cli db:migrate) ***หากข้อ 5 import database ไม่ต้องทำ migration***
 7. เข้าใช้งานเว็บโดยเข้าไปที่ 510831-wongnok-recipes/index.html ด้วย web browser และทดสอบเข้าใช้งาน
 
-หรือ โหลดโปรเจคตัวเต็มได้จาก (https://drive.google.com/file/d/1JFSR5qihzAO8SOMUC64CwZmc1DSDWhlR/view?usp=sharing) แล้วแตกไฟล์ จากนั้นทำขั้นตอน 2-6
+หรือ โหลดโปรเจคตัวเต็มได้จาก (https://drive.google.com/file/d/1JFSR5qihzAO8SOMUC64CwZmc1DSDWhlR/view?usp=sharing) แล้วแตกไฟล์ จากนั้นทำขั้นตอน 2-7
