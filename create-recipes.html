@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WongNok - วงนอก</title>
+    <title>WongNok - วงนอก - เพิ่มสูตรอาหารใหม่</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -43,7 +43,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="index.html" class="brand-link">
           <img src="adminlte/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
           <span class="brand-text font-weight-light">510831-วงนอก</span>
         </a>
@@ -56,7 +56,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a href="index.html" class="nav-link active">
+                <a href="index.html" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     สูตรอาหารทั้งหมด
@@ -131,7 +131,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">สูตรอาหารทั้งหมด</h1>
+                <h1 class="m-0">เพิ่มสูตรอาหารใหม่</h1>
               </div>
             </div>
             <!-- /.row -->
@@ -141,58 +141,75 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-            <section class="content">
+          <section class="content">
             <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">รายการสูตรอาหาร</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div id="example1table" class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th>ชื่อเมนู</th>
-                            <th>รูปภาพ</th>
-                            <th>วัตถุดิบ</th>
-                            <th>ขั้นตอน</th>
-                            <th>ระยะเวลา</th>
-                            <th>ความยากง่ายของสูตร</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                              <td>ชื่อเมนู</td>
-                              <td>รูปภาพ</td>
-                              <td>วัตถุดิบ</td>
-                              <td>ขั้นตอน</td>
-                              <td>ระยะเวลา</td>
-                              <td>ความยากง่ายของสูตร</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>ชื่อเมนู</th>
-                            <th>รูปภาพ</th>
-                            <th>วัตถุดิบ</th>
-                            <th>ขั้นตอน</th>
-                            <th>ระยะเวลา</th>
-                            <th>ความยากง่ายของสูตร</th>
-                          </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
+              <!-- login -->
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">กรอกข้อมูลสูตรอาหารใหม่</h3>
                 </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form id="createRecipesForm" class="form-horizontal">
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="inputMenuName" class="col-sm-2 col-form-label">ชื่อเมนู</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="name_of_menu" class="form-control" id="inputMenuName" placeholder="ชื่อเมนู">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuPicture" class="col-sm-2 col-form-label">รูปภาพ (ลิ้งค์)</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="picture_of_menu" class="form-control" id="inputMenuPicture" placeholder="https://example-img.com/ตัวอย่างรูป-img.img">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuMaterial" class="col-sm-2 col-form-label">วัตถุดิบ</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="material_of_menu" class="form-control" id="inputMenuMaterial" placeholder="เนื้อสัตว์, เครื่องปรุง">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuStructure" class="col-sm-2 col-form-label">ขั้นตอน</label>
+                      <div class="col-sm-10">
+                        <textarea name="menu_structure" class="form-control" id="inputMenuStructure" placeholder="ขั้นตอนการทำอาหาร" rows="5"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputMenuDuration" class="col-sm-2 col-form-label">ระยะเวลา (นาที)</label>
+                          <div class="col-sm-10">
+                            <select name="menu_duration" id="inputMenuDuration" class="form-control">
+                              <option value="5 - 10 mins">5 - 10 mins</option>
+                              <option value="11 - 30 mins">11 - 30 mins</option>
+                              <option value="31 - 60 mins">31 - 60 mins</option>
+                              <option value="60+ mins">60+ mins</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputMenuDifficulty" class="col-sm-2 col-form-label">ระดับความยากง่ายของสูตร</label>
+                          <div class="col-sm-10">
+                            <select name="menu_level_of_difficulty" id="inputMenuDifficulty" class="form-control">
+                              <option value="Easy">Easy</option>
+                              <option value="Medium">Medium</option>
+                              <option value="Hard">Hard</option>
+                              <option value="Extremely Hard">Extremely Hard</option>
+                            </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-info">บันทึกข้อมูล</button>
+                  </div>
+                  <!-- /.card-footer -->
+                </form>
               </div>
             </div>
           </section>
       <!-- /.content -->
-          </div>
+        </div>
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -236,10 +253,12 @@
     <!-- AdminLTE App -->
     <script src="adminlte/dist/js/adminlte.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script src="services/index.js"></script>
     <script src="services/Login-Register.js"></script>
+    <script src="services/my-recipes.js"></script>
     <script>
       function logOut() {
         alert("ลงชื่อออกเรียบร้อย");

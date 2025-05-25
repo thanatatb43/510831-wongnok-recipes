@@ -92,7 +92,7 @@
                     />
                   </div>
                   <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a id="memberName" href="#" class="d-block">คุณยังไม่ได้ Login</a>
                   </div>
                 </div>
                 <li class="nav-item">
@@ -100,7 +100,7 @@
                     <i class="nav-icon far fa-calendar-alt"></i>
                     <p>
                       สูตรอาหารของฉัน
-                      <span class="badge badge-info right">2</span>
+                      <!-- <span class="badge badge-info right">2</span> -->
                     </p>
                   </a>
                 </li>
@@ -144,7 +144,9 @@
           <section class="content">
             <!-- ปุ่มเพิ่มสูตรอาหาร -->
             <div class="container-fluid">
-                <button type="button" class="btn btn-block btn-primary btn-lg new-recipes-button">เพิ่มสูตรอาหารใหม่</button>
+                <button onclick="goToCreateRecipes()" type="button" class="btn btn-block btn-primary btn-lg new-recipes-button">
+                  เพิ่มสูตรอาหารใหม่
+                </button>
             </div>
             <div class="container-fluid">
                 <br>
@@ -254,6 +256,10 @@
       function logOut() {
         alert("ลงชื่อออกเรียบร้อย");
         localStorage.clear();
+      }
+
+      function goToCreateRecipes() {
+        window.location.href = "create-recipes.html";
       }
     </script>
   </body>
