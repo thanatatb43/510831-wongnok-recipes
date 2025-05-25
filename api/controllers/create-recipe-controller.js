@@ -24,7 +24,8 @@ exports.create = async function (req, res, next) {
     material_of_menu,
     menu_structure,
     menu_duration,
-    menu_level_of_difficulty
+    menu_level_of_difficulty,
+    user_id
   } = req.body;
 
   await model.Recipes.create({
@@ -34,7 +35,8 @@ exports.create = async function (req, res, next) {
     menu_structure: menu_structure,
     menu_duration: menu_duration,
     menu_level_of_difficulty: menu_level_of_difficulty,
-    user_id: req.user.id,
+    // user_id: req.user.id,
+    user_id: user_id
   });
 
   return res.status(201).json({

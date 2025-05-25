@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         //Do stuff with the response.
         if (response) {
+          
           console.log(response);
           alert(response.data.message);
 
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("activeUserName", response.data.user_name);
 
           window.location.href = "index.html";
+
         } else {
           alert("เกิดข้อผิดพลาด");
         }

@@ -7,7 +7,8 @@ const passportJWT = require('../middlewares/passport-jwt');
 // localhost:3000/recipes/
 router.get('/', recipesController.index );
 
-// localhost:3000/recipes/
-router.post('/create', [passportJWT.isLogin] ,recipesController.create );
+// localhost:3000/recipes/create
+// router.post('/create', [passportJWT.isLogin] ,recipesController.create );
+router.post('/create', recipesController.create );
 
 module.exports = router;
