@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WongNok - วงนอก - สูตรอาหารของฉัน</title>
+    <title>WongNok - วงนอก - กำลังปรับปรุง</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -96,7 +96,7 @@
                   </div>
                 </div>
                 <li class="nav-item">
-                  <a href="#" class="nav-link active">
+                  <a href="my-recipes.html" class="nav-link">
                     <i class="nav-icon far fa-calendar-alt"></i>
                     <p>
                       สูตรอาหารของฉัน
@@ -131,7 +131,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">สูตรอาหารของฉัน</h1>
+                <h1 class="m-0">กำลังปรับปรุง</h1>
               </div>
             </div>
             <!-- /.row -->
@@ -142,71 +142,21 @@
 
         <!-- Main content -->
           <section class="content">
-            <!-- ปุ่มเพิ่มสูตรอาหาร -->
-            <div class="container-fluid">
-                <button onclick="goToCreateRecipes()" type="button" class="btn btn-block btn-primary btn-lg new-recipes-button">
-                  เพิ่มสูตรอาหารใหม่
-                </button>
-            </div>
-            <div class="container-fluid">
-                <br>
-            </div>
-            <!-- แสดงรายการสูตรอาหารของ user -->
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">รายการสูตรอาหาร</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div id="example1table" class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                          <tr>
-                            <th>ชื่อเมนู</th>
-                            <th>รูปภาพ</th>
-                            <th>วัตถุดิบ</th>
-                            <th>ขั้นตอน</th>
-                            <th>ระยะเวลา</th>
-                            <th>ความยากง่ายของสูตร</th>
-                            <th>แก้ไข</th>
-                            <th>ลบ</th>
-                          </tr>
-                        </thead>
-                        <!-- <tbody>
-                            <tr>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td>คุณยังไม่มีสูตรอาหาร</td>
-                              <td></td>
-                              <td></td>
-                            </tr>
-                        </tbody> -->
-                        <tfoot>
-                          <tr>
-                            <th>ชื่อเมนู</th>
-                            <th>รูปภาพ</th>
-                            <th>วัตถุดิบ</th>
-                            <th>ขั้นตอน</th>
-                            <th>ระยะเวลา</th>
-                            <th>ความยากง่ายของสูตร</th>
-                            <th>แก้ไข</th>
-                            <th>ลบ</th>
-                          </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
-                </div>
-              </div>
-            </div>
-          </section>
+      <div class="error-page">
+        <h2 class="headline text-warning"> ช้าก่อน...</h2>
+
+        <div class="error-content">
+          <h3><i class="fas fa-exclamation-triangle text-warning"></i> เรากำลังปรับปรุงฟีเจอร์นี้</h3>
+
+          <p>
+            ระหว่างนี้ขอให้เพลิดเพลินกับฟีเจอร์ที่มีอยู่ก่อน ณ <a href="index.html">หน้าหลัก</a> แล้วพบกันใหม่เร็วๆ นี้.
+          </p>
+
+        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
       <!-- /.content -->
           </div>
       </div>
@@ -257,7 +207,6 @@
     <!-- Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="services/Login-Register.js"></script>
-    <script src="services/my-recipes.js"></script>
     <script>
       function logOut() {
         alert("ลงชื่อออกเรียบร้อย");

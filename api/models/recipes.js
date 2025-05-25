@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   Recipes.init({
     name_of_menu: DataTypes.STRING,
     picture_of_menu: DataTypes.STRING,
-    material_of_menu: DataTypes.STRING,
-    menu_structure: DataTypes.STRING,
+    material_of_menu: DataTypes.TEXT('long'),
+    menu_structure: DataTypes.TEXT('long'),
     menu_duration: DataTypes.STRING,
     menu_level_of_difficulty: DataTypes.STRING,
     user_id: {

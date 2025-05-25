@@ -1,12 +1,13 @@
 var activeUser = localStorage.getItem("activeUser");
 
-$(function () {
+$(document).ready(function () {
   $("#example1 tfoot th").each(function () {
     var title = $(this).text();
     $(this).html('<input type="text" placeholder="' + title + '" />');
   });
   console.log("datatable");
-  $("#example1")
+
+  var table = $("#example1")
     .DataTable({
       ajax: {
         url: "http://localhost:3000/user/" + activeUser,
@@ -26,6 +27,14 @@ $(function () {
         { data: "menu_structure" },
         { data: "menu_duration" },
         { data: "menu_level_of_difficulty" },
+        {
+          defaultContent:
+            '<input type="button" id="editRecipes" class="btn btn-block btn-warning" value="แก้ไข"/>',
+        },
+        {
+          defaultContent:
+            '<input type="button" id="deleteRecipes" class="btn btn-block btn-danger" value="ลบ"/>',
+        },
       ],
       initComplete: function () {
         // Apply the search
@@ -44,4 +53,20 @@ $(function () {
     .buttons()
     .container()
     .appendTo("#example1_wrapper .col-md-6:eq(0)");
+
+  $("#example1 tbody").on("click", "#editRecipes", function () {
+    // var row = $(this).closest("tr");
+
+    // var data = table.row(row).data().name_of_menu;
+    // console.log(data);
+    alert('กำลังปรับปรุง');
+  });
+
+  $("#example1 tbody").on("click", "#deleteRecipes", function () {
+    // var row = $(this).closest("tr");
+
+    // var data = table.row(row).data().picture_of_menu;
+    // console.log(data);
+    alert('กำลังปรับปรุง');
+  });
 });

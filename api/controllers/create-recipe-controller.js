@@ -8,7 +8,7 @@ const model = require("../models/index");
 
 exports.index = async function (req, res, next) {
   const recipes = await model.Recipes.findAll({
-    order: [["id", "asc"]],
+    order: [["id", "desc"]],
   });
 
   return res.status(200).json({

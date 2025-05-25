@@ -15,7 +15,7 @@ $(function () {
       autoWidth: false,
       scrollY: "400px",
       scrollCollapse: true,
-      pageLength: 50,
+      pageLength: 10,
       scrollX: true,
       columns: [
         { data: "name_of_menu" },
