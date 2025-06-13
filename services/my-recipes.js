@@ -7,7 +7,7 @@ $(document).ready(function () {
   });
   console.log("datatable");
 
-  var table = $("#example1")
+  $("#example1")
     .DataTable({
       ajax: {
         url: "http://localhost:3000/user/" + activeUser,
@@ -15,8 +15,8 @@ $(document).ready(function () {
       },
       responsive: false,
       lengthChange: true,
-      autoWidth: false,
-      scrollY: "400px",
+      autoWidth: true,
+      scrollY: true,
       scrollCollapse: true,
       pageLength: 50,
       scrollX: true,
@@ -28,12 +28,16 @@ $(document).ready(function () {
         { data: "menu_duration" },
         { data: "menu_level_of_difficulty" },
         {
-          defaultContent:
-            '<input type="button" id="editRecipes" class="btn btn-block btn-warning" value="แก้ไข"/>',
+          data: "id",
+          render: function (data) {
+            return `<button class="btn btn-block btn-warning editRecipes" data-id="${data}">แก้ไข</button>`;
+          }
         },
         {
-          defaultContent:
-            '<input type="button" id="deleteRecipes" class="btn btn-block btn-danger" value="ลบ"/>',
+          data: "id",
+          render: function (data) {
+            return `<button class="btn btn-block btn-danger deleteRecipes" data-id="${data}">ลบ</button>`;
+          }
         },
       ],
       initComplete: function () {
@@ -54,19 +58,14 @@ $(document).ready(function () {
     .container()
     .appendTo("#example1_wrapper .col-md-6:eq(0)");
 
-  $("#example1 tbody").on("click", "#editRecipes", function () {
-    // var row = $(this).closest("tr");
+  $("#example1 tbody").on("click", ".editRecipes", function () {
+    var id = $(this).data("id");
+    alert("ID clicked: " + id);
+  });  
 
-    // var data = table.row(row).data().name_of_menu;
-    // console.log(data);
-    alert('กำลังปรับปรุง');
-  });
+  $("#example1 tbody").on("click", ".deleteRecipes", function () {
+    var id = $(this).data("id");
+    alert("ID clicked: " + id);
+  }); 
 
-  $("#example1 tbody").on("click", "#deleteRecipes", function () {
-    // var row = $(this).closest("tr");
-
-    // var data = table.row(row).data().picture_of_menu;
-    // console.log(data);
-    alert('กำลังปรับปรุง');
-  });
 });
