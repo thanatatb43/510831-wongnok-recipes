@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WongNok - วงนอก - แก้ไขสูตรอาหาร</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="adminlte/plugins/jqvmap/jqvmap.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css" />
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="adminlte/plugins/daterangepicker/daterangepicker.css" />
+    <!-- summernote -->
+    <link rel="stylesheet" href="adminlte/plugins/summernote/summernote-bs4.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <!-- Preloader -->
+      <div class="preloader flex-column justify-content-center align-items-center" >
+        <img class="animation__shake" src="adminlte/dist/img/logo.png" alt="AdminLTELogo" height="60" width="60" />
+      </div>
+
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <!-- Right navbar links -->
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-link">
+          <img src="adminlte/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+          <span class="brand-text font-weight-light">510831-วงนอก</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    สูตรอาหารทั้งหมด
+                    <span class="right badge badge-danger">New</span>
+                  </p>
+                </a>
+              </li>
+              <li id ="forLoginRegister" class="nav-item">
+                <a href="Login-Register.html" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    เข้าสู่ระบบ / สมัครสมาชิก
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/widgets.html" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    About Us
+                  </p>
+                </a>
+              </li>
+              <div id="member">
+                <li class="nav-header">สมาชิก</li>
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+                    <img
+                      src="adminlte/dist/img/user2-160x160.jpg"
+                      class="img-circle elevation-2"
+                      alt="User Image"
+                    />
+                  </div>
+                  <div class="info">
+                    <a id="memberName" href="#" class="d-block">คุณยังไม่ได้ Login</a>
+                  </div>
+                </div>
+                <li class="nav-item">
+                  <a href="my-recipes.html" class="nav-link">
+                    <i class="nav-icon far fa-calendar-alt"></i>
+                    <p>
+                      สูตรอาหารของฉัน
+                      <!-- <span class="badge badge-info right">2</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/gallery.html" class="nav-link">
+                    <i class="nav-icon far fa-image"></i>
+                    <p>รีวิวของฉัน</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="logOut()" href="index.html" class="nav-link">
+                    <i class="nav-icon fas fa-columns"></i>
+                    <p>Logout</p>
+                  </a>
+                </li>
+              </div>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">แก้ไขสูตรอาหาร</h1>
+              </div>
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+          <section class="content">
+            <div class="container-fluid">
+              <!-- login -->
+              <div class="card card-info">
+                <div class="card-header">
+                  <h3 class="card-title">แก้ไขข้อมูลสูตรอาหารใหม่</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form id="editRecipesForm" class="form-horizontal">
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="inputMenuName" class="col-sm-2 col-form-label">ชื่อเมนู</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="name_of_menu" class="form-control" id="inputMenuName" placeholder="ชื่อเมนู">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuPicture" class="col-sm-2 col-form-label">รูปภาพ (ลิ้งค์)</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="picture_of_menu" class="form-control" id="inputMenuPicture" placeholder="https://example-img.com/ตัวอย่างรูป-img.img">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuMaterial" class="col-sm-2 col-form-label">วัตถุดิบ</label>
+                      <div class="col-sm-10">
+                         <textarea name="material_of_menu" class="form-control" id="inputMenuMaterial" placeholder="เนื้อสัตว์, เครื่องปรุง" rows="2"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputMenuStructure" class="col-sm-2 col-form-label">ขั้นตอน</label>
+                      <div class="col-sm-10">
+                        <textarea name="menu_structure" class="form-control" id="inputMenuStructure" placeholder="ขั้นตอนการทำอาหาร" rows="5"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputMenuDuration" class="col-sm-2 col-form-label">ระยะเวลา (นาที)</label>
+                          <div class="col-sm-10">
+                            <select name="menu_duration" id="inputMenuDuration" class="form-control">
+                              <option value="5 - 10 mins">5 - 10 mins</option>
+                              <option value="11 - 30 mins">11 - 30 mins</option>
+                              <option value="31 - 60 mins">31 - 60 mins</option>
+                              <option value="60+ mins">60+ mins</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputMenuDifficulty" class="col-sm-2 col-form-label">ระดับความยากง่ายของสูตร</label>
+                          <div class="col-sm-10">
+                            <select name="menu_level_of_difficulty" id="inputMenuDifficulty" class="form-control">
+                              <option value="Easy">Easy</option>
+                              <option value="Medium">Medium</option>
+                              <option value="Hard">Hard</option>
+                              <option value="Extremely Hard">Extremely Hard</option>
+                            </select>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-info">บันทึกข้อมูล</button>
+                  </div>
+                  <!-- /.card-footer -->
+                </form>
+              </div>
+            </div>
+          </section>
+      <!-- /.content -->
+        </div>
+      </div>
+      <!-- /.content-wrapper -->
+      <footer class="main-footer">
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="adminlte/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables  & Plugins -->
+    <script src="adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="adminlte/plugins/jszip/jszip.min.js"></script>
+    <script src="adminlte/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="adminlte/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    
+    <!-- overlayScrollbars -->
+    <script src="adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="adminlte/dist/js/adminlte.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="services/Login-Register.js"></script>
+    <script src="services/edit-recipes.js"></script>
+    <script>
+      function logOut() {
+        alert("ลงชื่อออกเรียบร้อย");
+        localStorage.clear();
+      }
+    </script>
+  </body>
+</html>

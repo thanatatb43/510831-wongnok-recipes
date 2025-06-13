@@ -60,7 +60,9 @@ $(document).ready(function () {
 
   $("#example1 tbody").on("click", ".editRecipes", function () {
     var id = $(this).data("id");
-    alert("ID clicked: " + id);
+    alert("กำลังนำทางไปยังหน้าแก้ไข");
+    localStorage.setItem("editRecipesId", id);
+    window.location.href = "edit-recipes.html"
   });  
 
   $("#example1 tbody").on("click", ".deleteRecipes", function () {
