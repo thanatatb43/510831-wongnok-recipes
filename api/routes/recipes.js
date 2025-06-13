@@ -11,4 +11,7 @@ router.get('/', recipesController.index );
 // router.post('/create', [passportJWT.isLogin] ,recipesController.create );
 router.post('/create', recipesController.create );
 
+// localhost:3000/recipes/recipes/10
+router.get('/:id', recipesController.show );
+
 module.exports = router;

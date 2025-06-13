@@ -5,6 +5,7 @@ const { promisify } = require("util");
 const writeFileAsync = promisify(fs.writeFile);
 
 const model = require("../models/index");
+const { where } = require("sequelize");
 
 exports.index = async function (req, res, next) {
   const recipes = await model.Recipes.findAll({
@@ -43,3 +44,18 @@ exports.create = async function (req, res, next) {
     message: "เพิ่มสูตรอาหารเรียบร้อย",
   });
 };
+
+// get recipes by id
+exports.show = async function(req, res, next) {
+    const { id } = req.params;
+
+    const returnRecipes = await model.Recipes.findOne({ where: { id: id} });
+
+    if (!returnRecipes) {
+        return res.status(404).json({message: 'ไม่พบข้อมูลสูตรอาหารนี้'});
+    }
+    
+    return res.status(200).json({
+        data: returnRecipes
+    });
+}
