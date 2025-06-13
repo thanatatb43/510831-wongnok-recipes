@@ -59,3 +59,43 @@ exports.show = async function(req, res, next) {
         data: returnRecipes
     });
 }
+
+//edit recipes
+exports.edit = async function(req, res, next) {
+    const { 
+    name_of_menu, 
+    picture_of_menu, 
+    material_of_menu,
+    menu_structure,
+    menu_duration,
+    menu_level_of_difficulty,
+    user_id,
+    id
+  } = req.body;
+
+  //verify user_id and id
+    const user = await model.Recipes.findOne({ where: {id: id, user_id: user_id} });
+    if (!user) {
+        return res.status(404).json({message: 'คุณไม่มีสิทธิแก้ไขสูตรนี้'});
+    }
+
+    const returnRecipes = await model.Recipes.update(
+      {
+        name_of_menu: name_of_menu,
+        picture_of_menu: picture_of_menu,
+        material_of_menu: material_of_menu,
+        menu_structure: menu_structure,
+        menu_duration: menu_duration,
+        menu_level_of_difficulty: menu_level_of_difficulty
+      },
+      { where: { id: id, user_id: user_id} }
+    );
+
+    if (!returnRecipes) {
+        return res.status(404).json({message: 'ไม่พบข้อมูลสูตรอาหารนี้'});
+    }
+    
+    return res.status(200).json({
+        data: returnRecipes
+    });
+}
