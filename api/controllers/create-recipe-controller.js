@@ -13,20 +13,20 @@ exports.index = async function (req, res, next) {
   });
 
   return res.status(200).json({
-    data: recipes
+    data: recipes,
   });
 };
 
 // เพิ่มสูตรใหม่
 exports.create = async function (req, res, next) {
-  const { 
-    name_of_menu, 
-    picture_of_menu, 
+  const {
+    name_of_menu,
+    picture_of_menu,
     material_of_menu,
     menu_structure,
     menu_duration,
     menu_level_of_difficulty,
-    user_id
+    user_id,
   } = req.body;
 
   await model.Recipes.create({
@@ -37,7 +37,7 @@ exports.create = async function (req, res, next) {
     menu_duration: menu_duration,
     menu_level_of_difficulty: menu_level_of_difficulty,
     // user_id: req.user.id,
-    user_id: user_id
+    user_id: user_id,
   });
 
   return res.status(201).json({
@@ -46,56 +46,83 @@ exports.create = async function (req, res, next) {
 };
 
 // get recipes by id
-exports.show = async function(req, res, next) {
-    const { id } = req.params;
+exports.show = async function (req, res, next) {
+  const { id } = req.params;
 
-    const returnRecipes = await model.Recipes.findOne({ where: { id: id} });
+  const returnRecipes = await model.Recipes.findOne({ where: { id: id } });
 
-    if (!returnRecipes) {
-        return res.status(404).json({message: 'ไม่พบข้อมูลสูตรอาหารนี้'});
-    }
-    
-    return res.status(200).json({
-        data: returnRecipes
-    });
-}
+  if (!returnRecipes) {
+    return res.status(404).json({ message: "ไม่พบข้อมูลสูตรอาหารนี้" });
+  }
+
+  return res.status(200).json({
+    data: returnRecipes,
+  });
+};
 
 //edit recipes
-exports.edit = async function(req, res, next) {
-    const { 
-    name_of_menu, 
-    picture_of_menu, 
+exports.edit = async function (req, res, next) {
+  const {
+    name_of_menu,
+    picture_of_menu,
     material_of_menu,
     menu_structure,
     menu_duration,
     menu_level_of_difficulty,
     user_id,
-    id
+    id,
   } = req.body;
 
   //verify user_id and id
-    const user = await model.Recipes.findOne({ where: {id: id, user_id: user_id} });
-    if (!user) {
-        return res.status(404).json({message: 'คุณไม่มีสิทธิแก้ไขสูตรนี้'});
-    }
+  const user = await model.Recipes.findOne({
+    where: { id: id, user_id: user_id },
+  });
+  if (!user) {
+    return res.status(404).json({ message: "คุณไม่มีสิทธิแก้ไขสูตรนี้" });
+  }
 
-    const returnRecipes = await model.Recipes.update(
-      {
-        name_of_menu: name_of_menu,
-        picture_of_menu: picture_of_menu,
-        material_of_menu: material_of_menu,
-        menu_structure: menu_structure,
-        menu_duration: menu_duration,
-        menu_level_of_difficulty: menu_level_of_difficulty
-      },
-      { where: { id: id, user_id: user_id} }
-    );
+  const returnRecipes = await model.Recipes.update(
+    {
+      name_of_menu: name_of_menu,
+      picture_of_menu: picture_of_menu,
+      material_of_menu: material_of_menu,
+      menu_structure: menu_structure,
+      menu_duration: menu_duration,
+      menu_level_of_difficulty: menu_level_of_difficulty,
+    },
+    { where: { id: id, user_id: user_id } }
+  );
 
-    if (!returnRecipes) {
-        return res.status(404).json({message: 'ไม่พบข้อมูลสูตรอาหารนี้'});
-    }
-    
-    return res.status(200).json({
-        data: returnRecipes
-    });
-}
+  if (!returnRecipes) {
+    return res.status(404).json({ message: "ไม่พบข้อมูลสูตรอาหารนี้" });
+  }
+
+  return res.status(200).json({
+    data: returnRecipes,
+  });
+};
+
+//delete recipes
+exports.delete = async function (req, res, next) {
+  const { user_id, id } = req.body;
+
+  //verify user_id and id
+  const user = await model.Recipes.findOne({
+    where: { id: id, user_id: user_id },
+  });
+  if (!user) {
+    return res.status(404).json({ message: "คุณไม่มีสิทธิแก้ไขสูตรนี้" });
+  }
+
+  const returnRecipes = await model.Recipes.destroy({
+    where: { id: id, user_id: user_id },
+  });
+
+  if (!returnRecipes) {
+    return res.status(404).json({ message: "ไม่พบข้อมูลสูตรอาหารนี้" });
+  }
+
+  return res.status(200).json({
+    message: "ลบข้อมูลสำเร็จ",
+  });
+};
