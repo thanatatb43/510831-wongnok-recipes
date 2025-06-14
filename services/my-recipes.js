@@ -31,13 +31,13 @@ $(document).ready(function () {
           data: "id",
           render: function (data) {
             return `<button class="btn btn-block btn-warning editRecipes" data-id="${data}">แก้ไข</button>`;
-          }
+          },
         },
         {
           data: "id",
           render: function (data) {
             return `<button class="btn btn-block btn-danger deleteRecipes" data-id="${data}">ลบ</button>`;
-          }
+          },
         },
       ],
       initComplete: function () {
@@ -62,12 +62,39 @@ $(document).ready(function () {
     var id = $(this).data("id");
     alert("กำลังนำทางไปยังหน้าแก้ไข");
     localStorage.setItem("editRecipesId", id);
-    window.location.href = "edit-recipes.html"
-  });  
+    window.location.href = "edit-recipes.html";
+  });
 
   $("#example1 tbody").on("click", ".deleteRecipes", function () {
-    var id = $(this).data("id");
-    alert("ID clicked: " + id);
-  }); 
 
+    var id = $(this).data("id");
+    // alert("ID clicked: " + id);
+
+    let data = JSON.stringify({
+      user_id: activeUser,
+      id: id,
+    });
+
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/recipes/delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        alert(response.data.message);
+        location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('เกิดข้อผิดพลาด');
+      });
+  });
 });

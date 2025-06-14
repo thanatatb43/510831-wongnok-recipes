@@ -17,4 +17,7 @@ router.get('/:id', recipesController.show );
 // localhost:3000/recipes/edit
 router.post('/edit', recipesController.edit );
 
+// localhost:3000/recipes/edit
+router.post('/delete', recipesController.delete  );
+
 module.exports = router;
