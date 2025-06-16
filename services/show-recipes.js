@@ -5,12 +5,12 @@ var userId = localStorage.getItem("activeUser");
 let firstconfig = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'http://localhost:3000/recipes/withowner/'+localStorage.getItem("editRecipesId")+'',
-  headers: { }
+  url: 'http://localhost:3000/recipes/withowner/' + localStorage.getItem("editRecipesId") + '',
+  headers: {}
 };
 
 // นำข้อมูลที่ได้มาแสดง
-  axios.request(firstconfig)
+axios.request(firstconfig)
   .then((response) => {
     console.log(JSON.stringify(response.data));
     var name_of_menu = response.data.data.name_of_menu;
@@ -20,7 +20,12 @@ let firstconfig = {
     var menu_structure = response.data.data.menu_structure;
     var menu_duration = response.data.data.menu_duration;
     var menu_level_of_difficulty = response.data.data.menu_level_of_difficulty;
-    var full_name = response.data.data.user.fullname;
+    var full_name;
+    if (response.data.data.user == null) {
+      full_name = 'WongNok';
+    } else {
+      full_name = response.data.data.user.fullname;
+    }
 
     // ตัด html tag ออกจากลิงค์รูปภาพ
     image_link_1 = picture_of_menu.replace(`<center><img width='14%' src='`, '');
@@ -32,7 +37,7 @@ let firstconfig = {
     document.getElementById('menuStructure').innerHTML = menu_structure;
     document.getElementById('menuDuration').innerHTML = menu_duration;
     document.getElementById('menuDifficulty').innerHTML = menu_level_of_difficulty;
-    document.getElementById('recipesOwner').innerHTML = `สูตรอาหารโดยคุณ `+ full_name;
+    document.getElementById('recipesOwner').innerHTML = `สูตรอาหารโดยคุณ ` + full_name;
   })
   .catch((error) => {
     console.log(error);

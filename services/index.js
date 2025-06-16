@@ -14,7 +14,6 @@ $(function () {
       lengthChange: true,
       autoWidth: false,
       scrollY: "400px",
-      scrollX: false,
       scrollCollapse: true,
       pageLength: 10,
       scrollX: true,

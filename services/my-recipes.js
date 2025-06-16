@@ -15,25 +15,27 @@ $(document).ready(function () {
       },
       responsive: false,
       lengthChange: true,
-      autoWidth: true,
-      scrollY: true,
+      autoWidth: false,
+      scrollY: '400px',
       scrollCollapse: true,
       pageLength: 50,
       scrollX: true,
       columns: [
-        { data: "name_of_menu" },
-        { data: "picture_of_menu" },
-        { data: "material_of_menu" },
-        { data: "menu_structure" },
-        { data: "menu_duration" },
-        { data: "menu_level_of_difficulty" },
+        { width: '11%', data: "name_of_menu" },
+        { width: '13%', data: "picture_of_menu" },
+        { width: '11%', data: "material_of_menu" },
+        { width: '11%', data: "menu_structure" },
+        { width: '9%', data: "menu_duration" },
+        { width: '11%', data: "menu_level_of_difficulty" },
         {
+          width: '11%',
           data: "id",
           render: function (data) {
             return `<button class="btn btn-block btn-warning editRecipes" data-id="${data}">แก้ไข</button>`;
           },
         },
         {
+          width: '11%',
           data: "id",
           render: function (data) {
             return `<button class="btn btn-block btn-danger deleteRecipes" data-id="${data}">ลบ</button>`;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WongNok - วงนอก - ให้คะแนนสูตรอาหาร</title>
+    <title>WongNok - วงนอก - รีวิวคะแนนสูตรอาหาร</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -131,7 +131,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">ให้คะแนนสูตรอาหาร</h1>
+                <h1 class="m-0">ให้คะแนนและรีวิวสูตรอาหาร</h1>
               </div>
             </div>
             <!-- /.row -->
@@ -196,11 +196,35 @@
               </div>
 
               <!-- ให้คะแนนสูตรอาหาร -->
-               <div class="container-fluid">
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-warning">ให้คะแนน</button>
-                  </div>
-               </div>
+              <div class="card card-danger">
+                <div class="card-header">
+                  <h3 class="card-title">ให้คะแนนสูตรอาหารนี้</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                      <label for="rateStar" class="col-sm-2 col-form-label">คะแนน</label>
+                      <div class="col-sm-10">
+                        <select name="menu_duration" id="rateStar" class="form-control">
+                              <option value="1">1 คะแนน</option>
+                              <option value="2">2 คะแนน</option>
+                              <option value="3" selected>3 คะแนน</option>
+                              <option value="4">4 คะแนน</option>
+                              <option value="5">5 คะแนน</option>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="rateComment" class="col-sm-2 col-form-label">ความคิดเห็น</label>
+                      <div class="col-sm-10">
+                        <input type="text" id="rateComment" class="form-control" placeholder="แสดงความคิดเห็นเกี่ยวกับสูตรอาหารนี้">
+                      </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-danger">ให้คะแนน</button>
+                </div>
+              </div> 
             </div>
           </section>
       <!-- /.content -->
