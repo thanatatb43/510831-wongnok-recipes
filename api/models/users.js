@@ -16,6 +16,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id', // fk's recipes table
         sourceKey: 'id', // pk's users table
       });
+
+      models.Users.hasMany(models.Rating, {
+        as: 'user_rating',
+        foreignKey: 'user_id', // fk's rating table
+        sourceKey: 'id', // pk's users table
+      });
+
     }
   }
   Users.init({

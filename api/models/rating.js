@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Recipes extends Model {
+  class Rating extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,27 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Recipes.belongsTo(models.Users, {
-        as: 'user',
-        foreignKey: 'user_id', // fk's recipes table
-        sourceKey: 'id', // pk's recipes table
+      models.Rating.belongsTo(models.Users, {
+        as: 'user_rating',
+        foreignKey: 'user_id', // fk's rating table
+        sourceKey: 'id', // pk's rating table
       });
 
-      models.Recipes.hasMany(models.Rating, {
+      models.Rating.belongsTo(models.Recipes, {
         as: 'recipes_rating',
         foreignKey: 'recipes_id', // fk's rating table
-        sourceKey: 'id', // pk's recipes table
+        sourceKey: 'id', // pk's rating table
       });
 
     }
   }
-  Recipes.init({
-    name_of_menu: DataTypes.STRING,
-    picture_of_menu: DataTypes.STRING,
-    material_of_menu: DataTypes.TEXT('long'),
-    menu_structure: DataTypes.TEXT('long'),
-    menu_duration: DataTypes.STRING,
-    menu_level_of_difficulty: DataTypes.STRING,
+  Rating.init({
+    rated_score: DataTypes.INTEGER,
+    rated_comment: DataTypes.TEXT('long'),
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -42,10 +38,20 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id' // id คือ pk ของตาราง users
       }
     },
+    recipes_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: {
+          tableName: 'recipes'
+        },
+        key: 'id' // id คือ pk ของตาราง recipes
+      }
+    },
   }, {
     sequelize,
-    modelName: 'Recipes',
+    modelName: 'Rating',
     underscored: true,
   });
-  return Recipes;
+  return Rating;
 };
