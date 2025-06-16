@@ -56,22 +56,10 @@ exports.add = async function (req, res, next) {
   }
   )
 
-  const is_owner = await model.Recipes.findOne({
-    where: {user_id: user_rating_id }
-  }
-  )
-
   if (has_comment) {
     return res.status(303).json({
       message: "คุณแสดงความคิดเห็นกับสูตรอาหารนี้ไปแล้ว",
       data: has_comment
-    });
-  }
-
-  if (is_owner) {
-    return res.status(303).json({
-      message: "ไม่สามารถให้คะแนนสูตรอาหารตัวเองได้",
-      data: is_owner
     });
   }
 
