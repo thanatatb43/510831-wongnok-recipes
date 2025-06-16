@@ -41,3 +41,25 @@ exports.index = async function (req, res, next) {
         data: rating
     });
 }
+
+// add new comment
+exports.add = async function (req, res, next) {
+  const {
+    rated_score,
+    rated_comment,
+    recipes_rating_id,
+    user_rating_id,
+  } = req.body;
+
+  const data = await model.Rating.create({
+    rated_score: rated_score,
+    rated_comment: rated_comment,
+    recipes_rating_id: recipes_rating_id,
+    user_rating_id: user_rating_id,
+  });
+
+  return res.status(201).json({
+    message: "เพิ่มความคิดเห็นเรียบร้อย",
+    data: data
+  });
+};
