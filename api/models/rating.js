@@ -13,13 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.Rating.belongsTo(models.Users, {
         as: 'user_rating',
-        foreignKey: 'user_id', // fk's rating table
+        foreignKey: 'user_rating_id', // fk's rating table
         sourceKey: 'id', // pk's rating table
       });
 
       models.Rating.belongsTo(models.Recipes, {
         as: 'recipes_rating',
-        foreignKey: 'recipes_id', // fk's rating table
+        foreignKey: 'recipes_rating_id', // fk's rating table
         sourceKey: 'id', // pk's rating table
       });
 
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   Rating.init({
     rated_score: DataTypes.INTEGER,
     rated_comment: DataTypes.TEXT('long'),
-    user_id: {
+    user_rating_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id' // id คือ pk ของตาราง users
       }
     },
-    recipes_id: {
+    recipes_rating_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       models.Users.hasMany(models.Rating, {
-        as: 'user_rating',
-        foreignKey: 'user_id', // fk's rating table
+        as: 'rating',
+        foreignKey: 'user_rating_id', // fk's rating table
         sourceKey: 'id', // pk's users table
       });
 
