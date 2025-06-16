@@ -12,4 +12,7 @@ router.get('/', ratingController.index );
 // localhost:3000/rating/add
 router.post('/add', ratingController.add );
 
+// localhost:3000/rating/recipes/10
+router.get('/recipes/:id', ratingController.showByRecipesId );
+
 module.exports = router;

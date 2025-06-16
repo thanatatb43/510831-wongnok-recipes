@@ -22,7 +22,7 @@ let firstconfig = {
     var menu_level_of_difficulty = response.data.data.menu_level_of_difficulty;
 
     // ตัด html tag ออกจากลิงค์รูปภาพ
-    image_link_1 = picture_of_menu.replace(`<center><img width='20%' src='`, '');
+    image_link_1 = picture_of_menu.replace(`<center><img width='14%' src='`, '');
     image_link_2 = image_link_1.replace(`'></img></center>`, '');
 
     document.getElementById('inputMenuName').value = name_of_menu;
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let data = JSON.stringify({
       name_of_menu: name_of_menu,
       picture_of_menu:
-        "<center><img width='20%' src='" +
+        "<center><img width='14%' src='" +
         picture_of_menu +
         "'></img></center>",
       material_of_menu: material_of_menu,

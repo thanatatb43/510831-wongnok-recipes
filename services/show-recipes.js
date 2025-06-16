@@ -5,7 +5,7 @@ var userId = localStorage.getItem("activeUser");
 let firstconfig = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'http://localhost:3000/recipes/withowner/' + localStorage.getItem("editRecipesId") + '',
+  url: 'http://localhost:3000/recipes/withowner/' + localStorage.getItem("rateRecipesId") + '',
   headers: {}
 };
 
@@ -43,64 +43,82 @@ axios.request(firstconfig)
     console.log(error);
   });
 
+  // แสดง comments
+  let secondconfig = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'http://localhost:3000/rating/recipes/' + localStorage.getItem("rateRecipesId") + '',
+  headers: {}
+};
+
+// นำข้อมูลที่ได้มาแสดง
+axios.request(secondconfig)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+    var totalRecord = response.data.totalRecord;
+    var rated_score = response.data.data.rated_score;
+    var rated_comment = response.data.data.rated_comment;
+    var full_name;
+    if (response.data.data.user_rating == null) {
+      full_name = 'WongNok';
+    } else {
+      full_name = response.data.data.user_rating.fullname;
+    }
+
+    for (let i = 0; i <= totalRecord; i++) {
+      document.getElementById('recipesComments').innerHTML = 
+      `
+        <div class="callout callout-success">
+          <h5>` + rated_comment + `</h5>
+          <p>` + rated_score + ` คะแนน</p>
+          <p>ความคิดเห็นโดยคุณ `+ full_name +`</p>
+        </div>
+      `
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  const editRecipesForm = document.getElementById("editRecipesForm");
+  const editRecipesForm = document.getElementById("rateRecipesForm");
 
-  // edit recipes
+  // rating recipes
   editRecipesForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    name_of_menu = editRecipesForm.name_of_menu.value;
-    picture_of_menu = editRecipesForm.picture_of_menu.value;
-    material_of_menu = editRecipesForm.material_of_menu.value;
-    menu_structure = editRecipesForm.menu_structure.value;
-    menu_duration = editRecipesForm.menu_duration.value;
-    menu_level_of_difficulty = editRecipesForm.menu_level_of_difficulty.value;
-    user_id = userId;
-    id = localStorage.getItem("editRecipesId");
+    rated_score = editRecipesForm.rateStar.value;
+    rated_comment = editRecipesForm.rateComment.value;
+    recipes_rating_id = localStorage.getItem("rateRecipesId");
+    user_rating_id = userId;
 
     // เรียกใช้ฟังก์ชันสำหรับตรวจสอบข้อมูลผู้ใช้
-    editTheMenu(
-      name_of_menu,
-      picture_of_menu,
-      material_of_menu,
-      menu_structure,
-      menu_duration,
-      menu_level_of_difficulty,
-      user_id,
-      id
+    rateTheMenu(
+      rated_score,
+      rated_comment,
+      recipes_rating_id,
+      user_rating_id,
     );
   });
 
-  function editTheMenu(
-    name_of_menu,
-    picture_of_menu,
-    material_of_menu,
-    menu_structure,
-    menu_duration,
-    menu_level_of_difficulty,
-    user_id,
-    id
+  function rateTheMenu(
+    rated_score,
+    rated_comment,
+    recipes_rating_id,
+    user_rating_id
   ) {
     let data = JSON.stringify({
-      name_of_menu: name_of_menu,
-      picture_of_menu:
-        "<center><img width='20%' src='" +
-        picture_of_menu +
-        "'></img></center>",
-      material_of_menu: material_of_menu,
-      menu_structure: menu_structure,
-      menu_duration: menu_duration,
-      menu_level_of_difficulty: menu_level_of_difficulty,
-      user_id: user_id,
-      id: id
+      rated_score: rated_score,
+      rated_comment: rated_comment,
+      recipes_rating_id: recipes_rating_id,
+      user_rating_id: user_rating_id,
     });
 
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:3000/recipes/edit",
+      url: "http://localhost:3000/rating/add",
       headers: {
         "Content-Type": "application/json",
         Authorization: LoggedInUser,
@@ -113,11 +131,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         alert("สำเร็จ " + response.data.message);
-        window.location.href = "my-recipes.html";
+        location.reload();
       })
       .catch((error) => {
         console.log(error);
-        alert("เกิดข้อผิดพลาด " + error.data.message);
+        alert("คุณเคยให้คะแนนสูตรนี้ไปแล้ว หรือเกิดข้อผิดพลาด โปรดตรวจสอบ console");
       });
   }
 });

@@ -53,7 +53,7 @@ $(function () {
     $("#example1 tbody").on("click", ".rateRecipes", function () {
     var id = $(this).data("id");
     alert("กำลังพาคุณไปยังหน้าให้คะแนน");
-    localStorage.setItem("editRecipesId", id);
+    localStorage.setItem("rateRecipesId", id);
     window.location.href = "show-recipes.html";
   });
 
