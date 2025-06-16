@@ -6,8 +6,8 @@ adminlte ดาวน์โหลดได้จาก (https://github.com/Color
 2. ติดตั้ง nodejs
 3. cd api -> npm install
 4. run api (cd api -> npm run dev) api จะ running ที่ localhost:3000
-5. สร้าง database ชื่อ 510831_wongnok_recipes โดย character set เป็น utf8 และ collation เป็น utf8_general_ci ***หรือ*** โหลด database ที่ (https://drive.google.com/file/d/1JNTOcCGwsWTrpzQGOgGigVcIadLJmntZ/view?usp=sharing) แล้วนำไป import เข้า Database server
+5. สร้าง database ชื่อ 510831_wongnok_recipes โดย character set เป็น utf8 และ collation เป็น utf8_general_ci ***หรือ*** โหลด database ที่ (https://drive.google.com/file/d/1lp-bonIhoIh3B-zaUyLJzWNcGIuikVfs/view?usp=sharing) แล้วนำไป import เข้า Database server
 6. ทำ migration ให้กับ database โดยไปที่ folder api จากนั้นใช้คำสั่ง (npx sequelize-cli db:migrate) ***หากข้อ 5 import database ไม่ต้องทำ migration***
 7. เข้าใช้งานเว็บโดยเข้าไปที่ 510831-wongnok-recipes/index.html ด้วย web browser และทดสอบเข้าใช้งาน
 
-หรือ โหลดโปรเจคตัวเต็มได้จาก (https://drive.google.com/file/d/1JFSR5qihzAO8SOMUC64CwZmc1DSDWhlR/view?usp=sharing) แล้วแตกไฟล์ จากนั้นทำขั้นตอน 2-7
+หรือ โหลดโปรเจคตัวเต็มได้จาก (https://drive.google.com/file/d/12Ha_Xjlf-2kY50NQZp4VQYOO47X1QuME/view?usp=sharing) แล้วแตกไฟล์ จากนั้นทำขั้นตอน 2-7
