@@ -126,3 +126,30 @@ exports.delete = async function (req, res, next) {
     message: "ลบข้อมูลสำเร็จ",
   });
 };
+
+// get recipes by id with owner
+exports.showwithowner = async function (req, res, next) {
+  const { id } = req.params;
+
+  const returnRecipes = await model.Recipes.findByPk(id,
+  {
+      include: [{
+        model: model.Users,
+        as: 'user',
+        attributes: [
+          'id',
+          'fullname',
+          'email'
+        ]
+      }]
+  }
+  );
+
+  if (!returnRecipes) {
+    return res.status(404).json({ message: "ไม่พบข้อมูลสูตรอาหารนี้" });
+  }
+
+  return res.status(200).json({
+    data: returnRecipes,
+  });
+};

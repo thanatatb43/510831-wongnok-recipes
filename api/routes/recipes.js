@@ -20,4 +20,7 @@ router.post('/edit', recipesController.edit );
 // localhost:3000/recipes/edit
 router.post('/delete', recipesController.delete  );
 
+// localhost:3000/recipes/withowner/10
+router.get('/withowner/:id', recipesController.showwithowner  );
+
 module.exports = router;

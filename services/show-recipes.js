@@ -5,7 +5,7 @@ var userId = localStorage.getItem("activeUser");
 let firstconfig = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'http://localhost:3000/recipes/'+localStorage.getItem("editRecipesId")+'',
+  url: 'http://localhost:3000/recipes/withowner/'+localStorage.getItem("editRecipesId")+'',
   headers: { }
 };
 
@@ -20,9 +20,10 @@ let firstconfig = {
     var menu_structure = response.data.data.menu_structure;
     var menu_duration = response.data.data.menu_duration;
     var menu_level_of_difficulty = response.data.data.menu_level_of_difficulty;
+    var full_name = response.data.data.user.fullname;
 
     // ตัด html tag ออกจากลิงค์รูปภาพ
-    image_link_1 = picture_of_menu.replace(`<center><img width='20%' src='`, '');
+    image_link_1 = picture_of_menu.replace(`<center><img width='14%' src='`, '');
     image_link_2 = image_link_1.replace(`'></img></center>`, '');
 
     document.getElementById('menuName').innerHTML = name_of_menu;
@@ -31,6 +32,7 @@ let firstconfig = {
     document.getElementById('menuStructure').innerHTML = menu_structure;
     document.getElementById('menuDuration').innerHTML = menu_duration;
     document.getElementById('menuDifficulty').innerHTML = menu_level_of_difficulty;
+    document.getElementById('recipesOwner').innerHTML = `สูตรอาหารโดยคุณ `+ full_name;
   })
   .catch((error) => {
     console.log(error);
