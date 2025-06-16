@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WongNok - วงนอก - แก้ไขสูตรอาหาร</title>
+    <title>WongNok - วงนอก - ให้คะแนนสูตรอาหาร</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -131,7 +131,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">แก้ไขสูตรอาหาร</h1>
+                <h1 class="m-0">ให้คะแนนสูตรอาหาร</h1>
               </div>
             </div>
             <!-- /.row -->
@@ -144,68 +144,63 @@
           <section class="content">
             <div class="container-fluid">
               <!-- login -->
-              <div class="card card-info">
+              <div class="card card-warning">
                 <div class="card-header">
-                  <h3 class="card-title">แก้ไขข้อมูลสูตรอาหารใหม่</h3>
+                  <h3 class="card-title">สูตรอาหาร</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="editRecipesForm" class="form-horizontal">
                   <div class="card-body">
                     <div class="form-group row">
-                      <label for="inputMenuName" class="col-sm-2 col-form-label">ชื่อเมนู</label>
+                      <label for="menuName" class="col-sm-2 col-form-label">ชื่อเมนู</label>
                       <div class="col-sm-10">
-                        <input type="text" name="name_of_menu" class="form-control" id="inputMenuName" placeholder="ชื่อเมนู">
+                        <p id="menuName"></p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputMenuPicture" class="col-sm-2 col-form-label">รูปภาพ (ลิ้งค์)</label>
+                      <label for="menuPicture" class="col-sm-2 col-form-label">รูปภาพ</label>
                       <div class="col-sm-10">
-                        <input type="text" name="picture_of_menu" class="form-control" id="inputMenuPicture" placeholder="https://example-img.com/ตัวอย่างรูป-img.img">
+                        <img id="menuPicture" width="35%">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputMenuMaterial" class="col-sm-2 col-form-label">วัตถุดิบ</label>
+                      <label for="menuMaterial" class="col-sm-2 col-form-label">วัตถุดิบ</label>
                       <div class="col-sm-10">
-                         <textarea name="material_of_menu" class="form-control" id="inputMenuMaterial" placeholder="เนื้อสัตว์, เครื่องปรุง" rows="2"></textarea>
+                         <p id="menuMaterial"></p>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="inputMenuStructure" class="col-sm-2 col-form-label">ขั้นตอน</label>
+                      <label for="menuStructure" class="col-sm-2 col-form-label">ขั้นตอน</label>
                       <div class="col-sm-10">
-                        <textarea name="menu_structure" class="form-control" id="inputMenuStructure" placeholder="ขั้นตอนการทำอาหาร" rows="5"></textarea>
+                        <p id="menuStructure"></p>
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputMenuDuration" class="col-sm-2 col-form-label">ระยะเวลา (นาที)</label>
+                        <label for="menuDuration" class="col-sm-2 col-form-label">ระยะเวลา (นาที)</label>
                           <div class="col-sm-10">
-                            <select name="menu_duration" id="inputMenuDuration" class="form-control">
-                              <option value="5 - 10 mins">5 - 10 mins</option>
-                              <option value="11 - 30 mins">11 - 30 mins</option>
-                              <option value="31 - 60 mins">31 - 60 mins</option>
-                              <option value="60+ mins">60+ mins</option>
-                            </select>
+                            <p id="menuDuration"></p>
                           </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputMenuDifficulty" class="col-sm-2 col-form-label">ระดับความยากง่ายของสูตร</label>
+                        <label for="menuDifficulty" class="col-sm-2 col-form-label">ระดับความยากง่ายของสูตร</label>
                           <div class="col-sm-10">
-                            <select name="menu_level_of_difficulty" id="inputMenuDifficulty" class="form-control">
-                              <option value="Easy">Easy</option>
-                              <option value="Medium">Medium</option>
-                              <option value="Hard">Hard</option>
-                              <option value="Extremely Hard">Extremely Hard</option>
-                            </select>
+                            <p id="menuDifficulty"></p>
                           </div>
                       </div>
                   </div>
                   <!-- /.card-body -->
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-info">บันทึกข้อมูล</button>
-                  </div>
+                   <div class="card-footer">
+                    <p id="recipesOwner"></p>
+                   </div>
                   <!-- /.card-footer -->
-                </form>
               </div>
+
+              <!-- ให้คะแนนสูตรอาหาร -->
+               <div class="container-fluid">
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-warning">ให้คะแนน</button>
+                  </div>
+               </div>
             </div>
           </section>
       <!-- /.content -->
@@ -258,7 +253,7 @@
     <!-- Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="services/Login-Register.js"></script>
-    <script src="services/edit-recipes.js"></script>
+    <script src="services/show-recipes.js"></script>
     <script>
       function logOut() {
         alert("ลงชื่อออกเรียบร้อย");
